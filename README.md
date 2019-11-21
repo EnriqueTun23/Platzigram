@@ -10,11 +10,11 @@ Haber instalado virtualenv
 
 ### Crear un virtualenv
 
-`virtualenv -p /usr/bin/python3 platzigram`
+`virtualenv -p /usr/bin/python3 env`
 
 ### Arrancar la maquina 
 
-`source venv/bin/activate`
+`source env/bin/activate`
 
 #### ---ojo---
 instalar los paquetes de requirements.txt
