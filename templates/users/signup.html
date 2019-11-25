@@ -1,0 +1,12 @@
+{% extends "users/base.html" %}
+{% block head_content %}
+<title>Platzigram | Crear usuario</title>
+{% endblock head_content %}
+
+{% block container %}
+    <h1>Sign up!</h1>
+
+    <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+    </form>
+{% endblock%}

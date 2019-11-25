@@ -1,8 +1,10 @@
 
 
-# Create your views here.
+# views post.
+# Django
 from django.shortcuts import render
-
+from django.contrib.auth.decorators import login_required
+# Utilities
 from datetime import datetime
 
 posts = [
@@ -35,6 +37,6 @@ posts = [
     },
 ]
 
-
+@login_required
 def list_posts(request):
     return render(request, 'posts/feel.html', {'posts': posts})
