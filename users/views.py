@@ -3,6 +3,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.views.generic import DetailView
 
 # Models
 from django.contrib.auth.models import User
@@ -10,6 +11,13 @@ from users.models import Profile
 
 # Forms
 from .forms import ProfileForm, SignupForm
+
+class UserDetailView(DetailView):
+    """ user detail view"""
+    template_name='users/detail.html',
+    slug_field = 'username'
+    slug_url_kwarg = 'username'
+    queryset = User.objects.all()
 
 
 @login_required
@@ -26,7 +34,7 @@ def update_profile(request):
             profile.picture = data['picture']
             profile.save()
 
-            return redirect('update_profile')
+            return redirect('users:update')
 
     else:
         form = ProfileForm()    
@@ -50,7 +58,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
-            return redirect('feed')
+            return redirect('posts:feed')
         else:
             return render(request, 'users/login.html', {'error': 'invalid username and password'})
     return render(request, 'users/login.html')
@@ -62,7 +70,7 @@ def signup(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('users:login')
     else:
         form = SignupForm()
     
@@ -79,4 +87,4 @@ def signup(request):
 def logout_view(request):
     """ logout post a user."""
     logout(request)
-    return redirect('login')
+    return redirect('users:login')

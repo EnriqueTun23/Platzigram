@@ -15,16 +15,13 @@ Including another URLconf
 """
 #DJANGO
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
 #PLATZIGRAM
 from platzigram import views as local_views
-#POSTS
-from posts import views as post_views
-#USERS
-from users import views as users_views
+
 
 urlpatterns = [
     #ADMIN
@@ -34,11 +31,7 @@ urlpatterns = [
     path('sorted/', local_views.hi, name='sort'),
     path('hi/<str:name>/<int:age>/', local_views.say_hi, name='hi'),
     #POSTS
-    path('',  post_views.list_posts, name='feed'),
-    path('posts/new/', post_views.create_post, name='create_post'),
+    path('', include(('posts.urls', 'posts'), namespace='posts')),
     #USER
-    path('users/login/', users_views.login_view, name='login'),
-    path('users/logout/', users_views.logout_view, name='logout'),
-    path('users/signup', users_views.signup, name='signup'),
-    path('users/me/profile', users_views.update_profile, name='update_profile'),
+    path('users/', include(('users.urls', 'users'), namespace='users'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
