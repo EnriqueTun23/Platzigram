@@ -5,7 +5,8 @@ from django.urls import path
 from django.views.generic import TemplateView
 # view 
 from .views import update_profile, signup, login_view, logout_view, UserDetailView
-
+# no importa
+from django.views.generic import TemplateView
 
 urlpatterns = [
     # Posts
@@ -32,9 +33,14 @@ urlpatterns = [
         view=update_profile,
         name='update'
     ),
-     path(
+    # path(
+    #     route='<str:username>/',
+    #     view=UserDetailView.as_view(),
+    #     name='detail'
+    # ),
+    path(
         route='<str:username>/',
-        view=UserDetailView.as_view(),
+        view=TemplateView.as_view(template_name='users/detail.html'),
         name='detail'
-    ),
+    )
 ]

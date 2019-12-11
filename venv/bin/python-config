@@ -1,4 +1,4 @@
-#!/Users/enriquetun/Documents/django-proyects/Platzigram/venv/bin/python
+#!/home/enrique/Documentos/platzi/django-examples/Platzigram/venv/bin/python
 
 import sys
 import getopt
