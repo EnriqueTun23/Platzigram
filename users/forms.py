@@ -29,7 +29,8 @@ class SignupForm(forms.Form):
         """ Username must be unique """
         username = self.cleaned_data['username']
         username_taken = User.objects.filter(username=username).exists()
-        import pdb; pdb.set_trace()
+        """ debugger de python """
+        #import pdb; pdb.set_trace()
         if username_taken:
             raise forms.ValidationError('Username esta en uso')
         return username

@@ -4,7 +4,7 @@
 from django.urls import path
 
 # Views 
-from .views import PostFeedView, create_post, PostDetailView, CreatePostView
+from .views import PostFeedView, PostDetailView, CreatePostView
 
 urlpatterns = [
     path(route='',  view=PostFeedView.as_view(), name='feed'),
