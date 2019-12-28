@@ -33,14 +33,14 @@ urlpatterns = [
         view=update_profile,
         name='update'
     ),
-    # path(
-    #     route='<str:username>/',
-    #     view=UserDetailView.as_view(),
-    #     name='detail'
-    # ),
     path(
         route='<str:username>/',
-        view=TemplateView.as_view(template_name='users/detail.html'),
+        view=UserDetailView.as_view(),
         name='detail'
-    )
+    ),
+    # path(
+    #     route='<str:username>/',
+    #     view=TemplateView.as_view(template_name='users/detail.html'),
+    #     name='detail'
+    # )
 ]

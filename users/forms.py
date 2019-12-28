@@ -1,6 +1,8 @@
 """ Forms  profile. """
 """ Este tipo de forms es uno de los ma complejos"""
 
+""" Ojos los forms me pueden ayudar para combinar dos metodos"""
+
 # Django
 from django import forms
 # model
@@ -27,6 +29,7 @@ class SignupForm(forms.Form):
         """ Username must be unique """
         username = self.cleaned_data['username']
         username_taken = User.objects.filter(username=username).exists()
+        import pdb; pdb.set_trace()
         if username_taken:
             raise forms.ValidationError('Username esta en uso')
         return username
