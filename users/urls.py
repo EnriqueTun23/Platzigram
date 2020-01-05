@@ -4,7 +4,7 @@
 from django.urls import path
 from django.views.generic import TemplateView
 # view 
-from .views import UpdateProfileView, login_view, logout_view, UserDetailView, SingupView
+from .views import UpdateProfileView, LogoutView, UserDetailView, SingupView, LoginView
 # no importa
 from django.views.generic import TemplateView
 
@@ -15,12 +15,12 @@ urlpatterns = [
     # Management
     path(
         route='login/',
-        view=login_view,
+        view=LoginView.as_view(),
         name='login'
     ),
     path(
         route='logout/',
-        view=logout_view,
+        view=LogoutView.as_view(),
         name='logout'
     ),
     path(

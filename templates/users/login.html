@@ -5,8 +5,10 @@
 {% endblock head_content %}
 
 {% block container %}
-{% if error %}
-    <p class="alert alert-danger">{{error}}</p>
+{% if form.errors %}
+    <p class="alert alert-danger">
+        Tu usaurio y password no son correctos. Porfavor intente de nuevo.
+    </p>
 {% endif %}
     <form method="POST" action="{% url 'users:login' %}">
         {% csrf_token %}
